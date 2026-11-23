@@ -7,10 +7,13 @@
 
 MFRC522 mfrc522(SS_PIN, RST_PIN);  // Create MFRC522 instance using the necessary pins
 byte accesUID2[7] = { 0x04, 0x27, 0x17, 0xE2, 0x3D, 0x75, 0x80 };//create array consisting of bytes, with a starting value (each starting with 0x signifying them as individual bytes)
+//This is the ID of the card wanted
 
+/*
 #include <Servo.h> //library used to control the servo
 Servo myServo; // Create servo object to control a servo motor
 int servoPin=8; //add the pin of the servo
+*/
 
 int count = 0; // count to check if open or closed
 
@@ -21,7 +24,9 @@ void setup() {
   delay(4);                           // Optional delay during startup
   mfrc522.PCD_DumpVersionToSerial();  // Dumps some info on the PCD and MFRC522 Card Reader, like version
   Serial.println(F("Klaar om te scannen"));
+  /*
   myServo.attach(servoPin); // Attach the servo to pin 9
+  */
 }
 
 void loop() {
@@ -46,6 +51,7 @@ void loop() {
     //accesUID2 is the previously defined correct uid to compare to (block 2 to compare)
     //comparison is done on the entire length of the mfrc522.uid.uidByte array, using sizeof()
     Serial.println("Correct");
+    /*
     delay(500);
     //als false dan draai ene hoek
     //als true draai andere hoek
@@ -56,6 +62,7 @@ void loop() {
       myServo.write(0);
     }
     count+=1;
+    */
   }
 
 
